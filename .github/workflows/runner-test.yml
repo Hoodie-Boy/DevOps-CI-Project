@@ -1,0 +1,30 @@
+
+name: Test Self-Hosted Runner
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-runner:
+    name: Check Ubuntu Runner
+
+    runs-on: [self-hosted, linux, cd-lab]
+
+    steps:
+      - name: Check Operating System
+        run: |
+          echo "Hello from my Ubuntu VM!"
+          hostname
+          uname -a
+
+      - name: Check Docker
+        run: |
+          docker --version
+          docker info
+
+      - name: Run Test Container
+        run: |
+          docker run --rm hello-world
