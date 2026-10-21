@@ -6,7 +6,7 @@ def test_home():
     response = client.get("/")
 
     assert response.status_code == 200
-    assert b"Hello from my first DevOps CI pipeline!" in response.data
+    assert b"Hello. I changed this line to check CI/CD Pipeline!" in response.data
 
 def test_health():
     client = app.test_client()
